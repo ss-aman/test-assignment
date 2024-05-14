@@ -38,4 +38,4 @@ Python should be already installed.
 Output :: Probability calculations : 372/773
 </code>
 <br>
-Here 9 is number of total possible days to attend classes. 
+Here 10 is number of total possible days to attend classes. 

@@ -3,17 +3,16 @@ import argparse
 
 class AttendencePatterns:
     possible_patterns = None
-    def _calc_patterns(self, n:int, pattern:list):
+    def _calc_patterns(self, n:int, pattern:str):
         if n == 0:
-            return pattern
-        for p in pattern:
-            if p[-3:] == '000':
-                return self._calc_patterns(n-1, [p+'1'])
-            else:
-                return self._calc_patterns(n-1, [p+'0']) + self._calc_patterns(n-1, [p+'1'])
-    
+            return [pattern]
+        if pattern[-3:] == '000':
+            return self._calc_patterns(n-1, pattern+'1')
+        else:
+            return self._calc_patterns(n-1, pattern+'0') + self._calc_patterns(n-1, pattern+'1')
+
     def all_possible_ways_to_attend_classes(self, days:int):
-        self.possible_patterns = self._calc_patterns(days-1, ['1']) + self._calc_patterns(days-1, ['0'])
+        self.possible_patterns = self._calc_patterns(days-1, '1') + self._calc_patterns(days-1, '0')
         return self.possible_patterns
     
     def calc_probality(self, days:int):
